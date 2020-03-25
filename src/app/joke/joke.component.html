@@ -1,19 +1,22 @@
-<div class="card card-block" appCardHover>
+<div class="card card-block" 
+[appCardHover]="{querySelector : 'p'}"
+>
   <h4 class="card-title">
     <ng-content select=".setup"></ng-content>
 
   </h4>
-  <template [ngIf]="!data.hide">
-    <p class="custom-directive">
+  <!-- <template [ngIf]="!data.hide">
+    <p class="custom-directive card-text">
       <ng-content select=".punchline"></ng-content>
     </p>
-  </template>
-  <!-- <p class="card-text"
-     [hidden]="data.hide">
-     <ng-content select=".punchline"></ng-content>
-  </p> -->
+  </template> -->
+  <p class="card-text"
+     [style.display]="'none'">
+     {{data.punchline}}
+     <!-- <ng-content select=".punchline"></ng-content> -->
+  </p>
      
-  <a class="btn btn-warning" (click)="data.toggle()">Tell Me</a>
+  <!-- <a class="btn btn-warning" (click)="data.toggle()" [style.display]="'none'">Tell Me</a> -->
    <a class="btn btn-danger"
   (click)="deleteItem()"
   >Delete
