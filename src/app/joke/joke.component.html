@@ -12,7 +12,7 @@
   </template> -->
   <p class="card-text"
      [style.display]="'none'">
-     {{data.punchline}}
+     {{data.punchline | cleanPipe:'boo,damn,hell'}}
      <!-- <ng-content select=".punchline"></ng-content> -->
   </p>
      
