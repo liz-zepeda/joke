@@ -1,21 +1,40 @@
 
-<div class="card card-block">
-  <h4 class="card-title">Create Joke</h4>
-  <div class="form-group">
-    <input type="text"
-           class="form-control"
-           placeholder="Enter the setup"
-           #setup>
+<form novalidate [formGroup]="myForm" >
+  <div class="card card-block">
+    <h4 class="card-title">Create Joke</h4>
+    <div class="form-group"
+      [ngClass]="{
+        'has-danger' : setup.errors && (setup.touched || setup.dirty),
+        'has-success' : setup.valid && (setup.touched || setup.dirty)
+      }">
+      <input type="text"
+             class="form-control"
+             placeholder="Enter the setup"
+             formControlName="setup">
+      <div class="form-control-feedback" 
+             *ngIf="setup.errors && (setup.touched || setup.dirty)">
+             <p>Setup required</p>
+           </div>
+    </div>
+    <div class="form-group"
+      [ngClass]="{
+        'has-danger' : punchline.errors && (punchline.touched || punchline.dirty),
+        'has-success' : punchline.valid && (punchline.touched || punchline.dirty)
+      }">
+      <input type="text"
+            class="form-control"
+            placeholder="Enter the punchline"
+            formControlName="punchline">
+      <div class="form-control-feedback" 
+        *ngIf="punchline.errors && (punchline.touched || punchline.dirty)">
+        <p>Punchline required</p>
+      </div>
+            <!-- <pre>valid: {{punchline.valid}}</pre> -->
+    </div>
+    <button type="button"
+            class="btn btn-primary"
+            (click)="createJoke(setup.value, punchline.value)">
+            Create
+    </button>
   </div>
-  <div class="form-group">
-    <input type="text"
-           class="form-control"
-           placeholder="Enter the punchline"
-           #punchline>
-  </div>
-  <button type="button"
-          class="btn btn-primary"
-          (click)="createJoke(setup.value, punchline.value)">
-          Create
-  </button>
-</div>
+</form>
