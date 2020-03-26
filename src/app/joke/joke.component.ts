@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Joke } from 'app/joke';
+import { JokeService } from 'app/joke.service';
 
 @Component({
   selector: 'app-joke',
@@ -13,7 +14,7 @@ export class JokeComponent  {
   constructor() { }
 
   deleteItem() {
-    this.jokeDeleted.emit(this.data)
+    this.jokeDeleted.emit(this.data);
   }
 
 }

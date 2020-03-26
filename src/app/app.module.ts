@@ -9,6 +9,7 @@ import { JokeComponent } from './joke/joke.component';
 import { JokeFormComponent } from './joke-form/joke-form.component';
 import { CardHoverDirective } from './card-hover.directive';
 import { CleanPipe } from './clean-pipe.pipe';
+import { JokeService } from './joke.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { CleanPipe } from './clean-pipe.pipe';
     HttpModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [ JokeService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

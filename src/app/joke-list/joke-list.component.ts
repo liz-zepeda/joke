@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, AfterViewInit, ViewChildren, QueryList, ElementRef, ContentChild, AfterContentInit } from '@angular/core';
-import { Joke } from 'app/joke';
 import { JokeComponent } from 'app/joke/joke.component';
+import { JokeService } from 'app/joke.service';
 
 @Component({
   selector: 'app-joke-list',
@@ -15,14 +15,10 @@ export class JokeListComponent implements AfterViewInit, AfterContentInit {
 
   @ContentChild(JokeComponent) jokeContentChild: JokeComponent;
 
-  jokes: Joke[];
 
-  constructor() {
-    this.jokes = [
-      new Joke('What did the cheese say when it looked in the mirror?', 'Hello-me (Halloumi)'),
-      new Joke('What kind of cheese do you use to disguise a small horse?', 'Mask-a-pony (Mascarpone)'),
-      new Joke('A kid threw a lump of cheddar at me', 'I thought boo ‘That’s not very mature’'),
-    ];
+  constructor(
+    private jokeService: JokeService
+  ) {
   }
   ngAfterContentInit(): void {
     console.log(`ngAfterViewInit jokeContentChild - ${this.jokeContentChild}`);
@@ -38,15 +34,6 @@ export class JokeListComponent implements AfterViewInit, AfterContentInit {
 
   }
 
-  addJoke(joke) {
-    this.jokes.unshift(joke);
-  }
-
-  deleteJoke(joke) {
-    let indexToDelete = this.jokes.indexOf(joke);
-    if (indexToDelete !== -1) {
-      this.jokes.splice(indexToDelete,1);
-    }
-  }
+ 
 
 }
