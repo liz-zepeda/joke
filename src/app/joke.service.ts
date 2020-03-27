@@ -19,6 +19,7 @@ export class JokeService {
   }
 
   deleteJoke(joke) {
+    console.log('deleteJoke: ',joke)
     let indexToDelete = this.jokes.indexOf(joke);
     if (indexToDelete !== -1) {
       this.jokes.splice(indexToDelete,1);
